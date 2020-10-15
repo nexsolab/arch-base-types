@@ -1,0 +1,120 @@
+{
+  "default": {
+    "type": "https://types.nexso.net/errors/Http.BadRequest",
+    "title": "Bad Request"
+  },
+  "description": "Describer a bad request error payload",
+  "examples": [{
+    "type": "https://types.nexso.net/errors/Http.BadRequest",
+    "title": "Bad Request",
+    "reason": null,
+    "detail": null,
+    "invalid-params": [{
+      "name": "page",
+      "reason": "Page should be informed"
+    }]
+  }],
+  "required": [
+    "type",
+    "invalid-params"
+  ],
+  "title": "Bad Request error",
+  "properties": {
+    "type": {
+      "const": "https://types.nexso.net/errors/Http.BadRequest",
+      "default": "",
+      "description": "An explanation about the purpose of this instance.",
+      "examples": [
+        "https://types.nexso.net/errors/Http.BadRequest"
+      ],
+      "title": "The type schema",
+      "type": "string"
+    },
+    "title": {
+      "default": "",
+      "description": "Error title",
+      "examples": [
+        "Bad Request"
+      ],
+      "title": "Error title",
+      "const": "Bad Request",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "default": null,
+      "description": "An explanation about the purpose of this instance.",
+      "examples": [
+        null
+      ],
+      "title": "The reason schema",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "detail": {
+      "default": null,
+      "description": "Details about the error",
+      "examples": [
+        null
+      ],
+      "title": "Error details",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "invalid-params": {
+      "default": [],
+      "description": "Should indicate what parameters have an error and a detail about the error for this",
+      "examples": [
+        [{
+          "name": "xxx",
+          "reason": null
+        }]
+      ],
+      "maxItems": 10,
+      "minItems": 1,
+      "title": "Invalid params",
+      "type": "object",
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/invalid-params/items",
+        "anyOf": [{
+          "default": {},
+          "examples": [{
+            "name": "page",
+            "reason": "Page number should be informed"
+          }],
+          "required": [
+            "name",
+            "reason"
+          ],
+          "title": "Invalid param description",
+          "properties": {
+            "name": {
+              "examples": [
+                "page"
+              ],
+              "title": "Property name",
+              "type": "string"
+            },
+            "reason": {
+              "description": "Should specify why this field is invalid. Not passed in validation? Is not informed? Is empty?",
+              "examples": [
+                "Page number should be informed"
+              ],
+              "title": "Why is invalid",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }]
+      }
+    }
+  },
+  "additionalProperties": false
+}

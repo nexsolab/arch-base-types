@@ -1,0 +1,68 @@
+{
+  "default": {
+    "type": "https://types.nexso.net/errors/Generic",
+    "title": "Generic error"
+  },
+  "description": "It describes a generic error payload. Its use should be avoided, use specific types of errors instead.",
+  "examples": [{
+    "type": "https://types.nexso.net/errors/Generic",
+    "title": "Unknown error",
+    "reason": null,
+    "detail": null
+  }],
+  "required": [
+    "type",
+    "invalid-params"
+  ],
+  "title": "Generic error",
+  "properties": {
+    "type": {
+      "const": "https://types.nexso.net/errors/Http.BadRequest",
+      "default": "",
+      "description": "An explanation about the purpose of this instance.",
+      "examples": [
+        "https://types.nexso.net/errors/Http.BadRequest"
+      ],
+      "title": "The type schema",
+      "type": "string"
+    },
+    "title": {
+      "const": "Unknown error",
+      "default": "",
+      "description": "Error title",
+      "examples": [
+        "Unknown error"
+      ],
+      "title": "Error title",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "default": null,
+      "description": "When it's possible, should describe why this error occurred",
+      "examples": [
+        null
+      ],
+      "title": "Reason of this error",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "detail": {
+      "default": null,
+      "description": "Details about the error",
+      "examples": [
+        null
+      ],
+      "title": "Error details",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

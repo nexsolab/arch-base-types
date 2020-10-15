@@ -1,0 +1,34 @@
+{
+  "default": {},
+  "description": "Absence alert of the correlation ID in request headers",
+  "examples": [{
+    "currentValue": null,
+    "validationMatch": true
+  }],
+  "required": [
+    "currentValue"
+  ],
+  "title": "Correlation ID absence alert",
+  "properties": {
+    "currentValue": {
+      "default": null,
+      "description": "The current value informed in headers",
+      "examples": [
+        null
+      ],
+      "title": "Correlation ID current value",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "validationMatch": {
+      "default": false,
+      "description": "Indicate if the current value is in the correct format",
+      "examples": [
+        true
+      ],
+      "title": "Input format is correct"
+    }
+  }
+}
