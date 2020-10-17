@@ -1,27 +1,26 @@
 {
   "default": {
-    "type": "https://types.nexso.net/errors/Generic",
+    "type": "https://types.nexso.dev/errors/Generic",
     "title": "Generic error"
   },
   "description": "It describes a generic error payload. Its use should be avoided, use specific types of errors instead.",
   "examples": [{
-    "type": "https://types.nexso.net/errors/Generic",
+    "type": "https://types.nexso.dev/errors/Generic",
     "title": "Unknown error",
     "reason": null,
     "detail": null
   }],
   "required": [
-    "type",
-    "invalid-params"
+    "type"
   ],
   "title": "Generic error",
   "properties": {
     "type": {
-      "const": "https://types.nexso.net/errors/Http.BadRequest",
+      "const": "https://types.nexso.dev/errors/Generic",
       "default": "",
       "description": "An explanation about the purpose of this instance.",
       "examples": [
-        "https://types.nexso.net/errors/Http.BadRequest"
+        "https://types.nexso.dev/errors/Generic"
       ],
       "title": "The type schema",
       "type": "string"

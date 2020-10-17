@@ -5,9 +5,7 @@
     "currentValue": null,
     "validationMatch": true
   }],
-  "required": [
-    "currentValue"
-  ],
+  "required": [],
   "title": "Correlation ID absence alert",
   "properties": {
     "currentValue": {

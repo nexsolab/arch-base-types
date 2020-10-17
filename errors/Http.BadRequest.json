@@ -1,11 +1,11 @@
 {
   "default": {
-    "type": "https://types.nexso.net/errors/Http.BadRequest",
+    "type": "https://types.nexso.dev/errors/Http.BadRequest",
     "title": "Bad Request"
   },
   "description": "Describer a bad request error payload",
   "examples": [{
-    "type": "https://types.nexso.net/errors/Http.BadRequest",
+    "type": "https://types.nexso.dev/errors/Http.BadRequest",
     "title": "Bad Request",
     "reason": null,
     "detail": null,
@@ -21,11 +21,11 @@
   "title": "Bad Request error",
   "properties": {
     "type": {
-      "const": "https://types.nexso.net/errors/Http.BadRequest",
+      "const": "https://types.nexso.dev/errors/Http.BadRequest",
       "default": "",
       "description": "An explanation about the purpose of this instance.",
       "examples": [
-        "https://types.nexso.net/errors/Http.BadRequest"
+        "https://types.nexso.dev/errors/Http.BadRequest"
       ],
       "title": "The type schema",
       "type": "string"
@@ -79,7 +79,7 @@
       "maxItems": 10,
       "minItems": 1,
       "title": "Invalid params",
-      "type": "object",
+      "type": "array",
       "additionalItems": true,
       "items": {
         "$id": "#/properties/invalid-params/items",
