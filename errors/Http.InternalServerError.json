@@ -12,19 +12,27 @@
     "detail": null
   }],
   "required": [
-    "type"
+    "type",
+    "statusCode"
   ],
   "title": "Internal Server Error error",
   "properties": {
     "type": {
       "const": "https://types.nexso.dev/errors/Http.InternalServerError",
-      "default": "",
-      "description": "The type of the error in the nexso namespace",
+      "default": "https://types.nexso.dev/errors/Http.InternalServerError",
+      "description": "The type of the error in the nexso namespace.",
       "examples": [
         "https://types.nexso.dev/errors/Http.InternalServerError"
       ],
       "title": "The type schema",
       "type": "string"
+    },
+    "statusCode": {
+      "const": "500",
+      "default": "500",
+      "description": "An HTTP code indicated for this error.",
+      "title": "The HTTP status code",
+      "type": "integer"
     },
     "title": {
       "default": "",
