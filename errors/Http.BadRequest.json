@@ -32,8 +32,8 @@
       "type": "string"
     },
     "statusCode": {
-      "const": "400",
-      "default": "400",
+      "const": 400,
+      "default": 400,
       "description": "An HTTP code indicated for this error.",
       "title": "The HTTP status code",
       "type": "integer"

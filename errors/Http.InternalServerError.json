@@ -28,20 +28,19 @@
       "type": "string"
     },
     "statusCode": {
-      "const": "500",
-      "default": "500",
+      "const": 500,
+      "default": 500,
       "description": "An HTTP code indicated for this error.",
       "title": "The HTTP status code",
       "type": "integer"
     },
     "title": {
-      "default": "",
+      "default": "Internal Server Error",
       "description": "Error title",
       "examples": [
         "Internal Server Error"
       ],
       "title": "Error title",
-      "const": "Internal Server Error",
       "type": [
         "string",
         "null"
