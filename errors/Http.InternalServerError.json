@@ -1,39 +1,39 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "default": {
-    "type": "https://types.nexso.dev/errors/Generic",
-    "title": "Generic error"
+    "type": "https://types.nexso.dev/errors/Http.InternalServerError",
+    "title": "Internal Server Error"
   },
-  "description": "It describes a generic error payload. Its use should be avoided, use specific types of errors instead.",
+  "description": "Describer a internal server error payload",
   "examples": [{
-    "type": "https://types.nexso.dev/errors/Generic",
-    "title": "Unknown error",
+    "type": "https://types.nexso.dev/errors/Http.InternalServerError",
+    "title": "Internal Server Error",
     "reason": null,
     "detail": null
   }],
   "required": [
     "type"
   ],
-  "title": "Generic error",
+  "title": "Internal Server Error error",
   "properties": {
     "type": {
-      "const": "https://types.nexso.dev/errors/Generic",
+      "const": "https://types.nexso.dev/errors/Http.InternalServerError",
       "default": "",
-      "description": "An explanation about the purpose of this instance.",
+      "description": "The type of the error in the nexso namespace",
       "examples": [
-        "https://types.nexso.dev/errors/Generic"
+        "https://types.nexso.dev/errors/Http.InternalServerError"
       ],
       "title": "The type schema",
       "type": "string"
     },
     "title": {
-      "const": "Unknown error",
       "default": "",
       "description": "Error title",
       "examples": [
-        "Unknown error"
+        "Internal Server Error"
       ],
       "title": "Error title",
+      "const": "Internal Server Error",
       "type": [
         "string",
         "null"
@@ -41,14 +41,14 @@
     },
     "reason": {
       "default": null,
-      "description": "When it's possible, should describe why this error occurred",
+      "description": "An explanation about the purpose of this instance.",
       "examples": [
         null
       ],
-      "title": "Reason of this error",
+      "title": "The reason schema",
       "type": [
-        "string",
-        "null"
+        "null",
+        "string"
       ]
     },
     "detail": {
@@ -64,5 +64,5 @@
       ]
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "default": {
     "type": "https://types.nexso.dev/errors/Http.BadRequest",
     "title": "Bad Request"
@@ -23,7 +24,7 @@
     "type": {
       "const": "https://types.nexso.dev/errors/Http.BadRequest",
       "default": "",
-      "description": "An explanation about the purpose of this instance.",
+      "description": "The type of the error in the nexso namespace",
       "examples": [
         "https://types.nexso.dev/errors/Http.BadRequest"
       ],
