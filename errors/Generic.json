@@ -27,7 +27,6 @@
       "type": "string"
     },
     "title": {
-      "const": "Unknown error",
       "default": "",
       "description": "Error title",
       "examples": [
