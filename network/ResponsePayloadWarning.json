@@ -1,0 +1,28 @@
+{
+  "examples": [{
+    "type": "https://types.nexso.dev/warnings/RequestHeaders.CorrelationId",
+    "message": "The Correlation Id should be informed in headers.",
+    "data": null
+  }],
+  "required": [
+    "type",
+    "message"
+  ],
+  "title": "Response warning payload",
+  "properties": {
+    "type": {
+      "pattern": "^https://types.nexso.dev/warnings/[A-Za-z0-9\\-\\.]+$",
+      "title": "Nexso URI of the warning type",
+      "type": "string"
+    },
+    "message": {
+      "title": "Message of the warning",
+      "type": "string"
+    },
+    "data": {
+      "default": null,
+      "title": "Anything that could complement warning message"
+    }
+  },
+  "additionalProperties": false
+}

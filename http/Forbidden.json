@@ -1,39 +1,39 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "default": {
-    "type": "https://types.nexso.dev/errors/Http.BadRequest",
-    "title": "Bad Request"
+    "type": "https://types.nexso.dev/http/Forbidden",
+    "title": "Forbidden"
   },
-  "description": "Describer a bad request error payload",
+  "description": "Describer a Forbidden error payload",
   "examples": [{
-    "type": "https://types.nexso.dev/errors/Http.BadRequest",
-    "title": "Bad Request",
+    "type": "https://types.nexso.dev/http/Forbidden",
+    "title": "Forbidden",
     "reason": null,
     "detail": null,
-    "invalid-params": [{
+    "missing-authorizations": [{
       "name": "page",
       "reason": "Page should be informed"
     }]
   }],
   "required": [
     "type",
-    "invalid-params"
+    "missing-authorizations"
   ],
-  "title": "Bad Request error",
+  "title": "Forbidden error",
   "properties": {
     "type": {
-      "const": "https://types.nexso.dev/errors/Http.BadRequest",
+      "const": "https://types.nexso.dev/http/Forbidden",
       "default": "",
       "description": "The type of the error in the nexso namespace",
       "examples": [
-        "https://types.nexso.dev/errors/Http.BadRequest"
+        "https://types.nexso.dev/http/Forbidden"
       ],
       "title": "The type schema",
       "type": "string"
     },
     "statusCode": {
-      "const": 400,
-      "default": 400,
+      "const": 403,
+      "default": 403,
       "description": "An HTTP code indicated for this error.",
       "title": "The HTTP status code",
       "type": "integer"
@@ -42,10 +42,10 @@
       "default": "",
       "description": "Error title",
       "examples": [
-        "Bad Request"
+        "Forbidden"
       ],
       "title": "Error title",
-      "const": "Bad Request",
+      "const": "Forbidden",
       "type": [
         "string",
         "null"
@@ -75,47 +75,41 @@
         "null"
       ]
     },
-    "invalid-params": {
+    "missing-authorizations": {
       "default": [],
-      "description": "Should indicate what parameters have an error and a detail about the error for this",
+      "description": "Should indicate what authorizations is required to access the resource",
       "examples": [
         [{
-          "name": "xxx",
-          "reason": null
+          "type": "https://types.nexso.dev/authorization/Permission",
+          "name": "auth.location.remote-login@nexso.dev",
+          "message": "You cannot login from a remote location."
         }]
       ],
       "maxItems": 10,
       "minItems": 1,
-      "title": "Invalid params",
+      "title": "Missing authorizations",
       "type": "array",
       "additionalItems": true,
       "items": {
-        "$id": "#/properties/invalid-params/items",
+        "$id": "#/properties/missing-authorizations/items",
         "anyOf": [{
           "default": {},
-          "examples": [{
-            "name": "page",
-            "reason": "Page number should be informed"
-          }],
           "required": [
-            "name",
-            "reason"
+            "type",
+            "name"
           ],
-          "title": "Invalid param description",
+          "title": "Missing authorization",
           "properties": {
-            "name": {
-              "examples": [
-                "page"
-              ],
-              "title": "Property name",
+            "type": {
+              "title": "The type of the required authorization",
               "type": "string"
             },
-            "reason": {
-              "description": "Should specify why this field is invalid. Not passed in validation? Is not informed? Is empty?",
-              "examples": [
-                "Page number should be informed"
-              ],
-              "title": "Why is invalid",
+            "name": {
+              "title": "The authorization name (role or permission name)",
+              "type": "string"
+            },
+            "message": {
+              "title": "A friendly message to requester why this is required",
               "type": "string"
             }
           },
