@@ -1,0 +1,10 @@
+{
+  "globalHeaders": {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Cache-Control": "public, must-revalidate, max-age=2592000"
+  },
+  "mimeTypes": {
+    ".json": "application/schema+json"
+  }
+}
