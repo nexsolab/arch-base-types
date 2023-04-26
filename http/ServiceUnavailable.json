@@ -1,13 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "default": {
-    "type": "https://types.nexso.dev/http/InternalServerError",
-    "title": "Internal Server Error"
+    "type": "https://types.nexso.dev/http/ServiceUnavailable",
+    "title": "Service Unavailable"
   },
-  "description": "Describe a internal server error payload",
+  "description": "Describe a Service Unavailable payload",
   "examples": [{
-    "type": "https://types.nexso.dev/http/InternalServerError",
-    "title": "Internal Server Error",
+    "type": "https://types.nexso.dev/http/ServiceUnavailable",
+    "title": "Service Unavailable",
     "reason": null,
     "detail": null
   }],
@@ -15,30 +15,30 @@
     "type",
     "statusCode"
   ],
-  "title": "Internal Server Error error",
+  "title": "Service Unavailable error",
   "properties": {
     "type": {
-      "const": "https://types.nexso.dev/http/InternalServerError",
-      "default": "https://types.nexso.dev/http/InternalServerError",
+      "const": "https://types.nexso.dev/http/ServiceUnavailable",
+      "default": "https://types.nexso.dev/http/ServiceUnavailable",
       "description": "The type of the error in the nexso namespace.",
       "examples": [
-        "https://types.nexso.dev/http/InternalServerError"
+        "https://types.nexso.dev/http/ServiceUnavailable"
       ],
       "title": "The type schema",
       "type": "string"
     },
     "statusCode": {
-      "const": 500,
-      "default": 500,
+      "const": 503,
+      "default": 503,
       "description": "An HTTP code indicated for this error.",
       "title": "The HTTP status code",
       "type": "integer"
     },
     "title": {
-      "default": "Internal Server Error",
+      "default": "Service Unavailable",
       "description": "Error title",
       "examples": [
-        "Internal Server Error"
+        "Service Unavailable"
       ],
       "title": "Error title",
       "type": [
@@ -69,6 +69,29 @@
         "string",
         "null"
       ]
+    },
+    "backend-errors": {
+      "examples": [
+        {
+          "message": "Timeout",
+          "stack": null
+        }
+      ],
+      "title": "List of backend errors",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Brief message of the error"
+          },
+          "stack": {
+            "type": ["string", "null"],
+            "title": "Error stacktrace"
+          }
+        }
+      }
     }
   },
   "additionalProperties": false
