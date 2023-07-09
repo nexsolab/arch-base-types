@@ -4,7 +4,7 @@
     "type": "https://types.nexso.dev/http/Forbidden",
     "title": "Forbidden"
   },
-  "description": "Describer a Forbidden error payload",
+  "description": "Describe a Forbidden error payload",
   "examples": [{
     "type": "https://types.nexso.dev/http/Forbidden",
     "title": "Forbidden",

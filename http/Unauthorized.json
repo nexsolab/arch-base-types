@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "default": {
+    "type": "https://types.nexso.dev/http/Unauthorized",
+    "title": "Unauthorized"
+  },
+  "description": "Describe a Unauthorized error payload",
+  "examples": [
+    {
+      "type": "https://types.nexso.dev/http/Unauthorized",
+      "title": "Unauthorized",
+      "reason": "Destiny application doesn't match token audience.",
+      "detail": null,
+      "reasonCode": "not-match-audience"
+    }
+  ],
+  "required": [
+    "type",
+    "title"
+  ],
+  "title": "Unauthorized error",
+  "properties": {
+    "type": {
+      "const": "https://types.nexso.dev/http/Unauthorized",
+      "default": "",
+      "description": "The type of the error in the nexso namespace",
+      "examples": [
+        "https://types.nexso.dev/http/Unauthorized"
+      ],
+      "title": "The type schema",
+      "type": "string"
+    },
+    "statusCode": {
+      "const": 401,
+      "default": 401,
+      "description": "An HTTP code indicated for this error.",
+      "title": "The HTTP status code",
+      "type": "integer"
+    },
+    "title": {
+      "default": "",
+      "description": "Error title",
+      "examples": [
+        "Unauthorized"
+      ],
+      "title": "Error title",
+      "const": "Unauthorized",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "default": null,
+      "description": "An explanation about the purpose of this instance.",
+      "examples": [
+        null
+      ],
+      "title": "The reason schema",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "detail": {
+      "default": null,
+      "description": "Details about the error",
+      "examples": [
+        null
+      ],
+      "title": "Error details",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reasonCode": {
+      "default": null,
+      "description": "Reason code used to identify the error",
+      "title": "Predefined reason code",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

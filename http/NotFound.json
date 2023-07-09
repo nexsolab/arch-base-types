@@ -1,46 +1,49 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "default": {
-    "type": "https://types.nexso.dev/http/InternalServerError",
-    "title": "Internal Server Error"
+    "type": "https://types.nexso.dev/http/NotFound",
+    "title": "Not Found"
   },
-  "description": "Describe a internal server error payload",
+  "description": "Describe a Not Found error payload",
   "examples": [{
-    "type": "https://types.nexso.dev/http/InternalServerError",
-    "title": "Internal Server Error",
-    "reason": null,
-    "detail": null
+    "type": "https://types.nexso.dev/http/NotFound",
+    "title": "Not Found",
+    "reason": "No route match",
+    "detail": null,
+    "location": "/api/invalid",
+    "reasonCode": "no-route"
   }],
   "required": [
     "type",
-    "statusCode"
+    "title"
   ],
-  "title": "Internal Server Error error",
+  "title": "Not Found error",
   "properties": {
     "type": {
-      "const": "https://types.nexso.dev/http/InternalServerError",
-      "default": "https://types.nexso.dev/http/InternalServerError",
-      "description": "The type of the error in the nexso namespace.",
+      "const": "https://types.nexso.dev/http/NotFound",
+      "default": "",
+      "description": "The type of the error in the nexso namespace",
       "examples": [
-        "https://types.nexso.dev/http/InternalServerError"
+        "https://types.nexso.dev/http/NotFound"
       ],
       "title": "The type schema",
       "type": "string"
     },
     "statusCode": {
-      "const": 500,
-      "default": 500,
+      "const": 404,
+      "default": 404,
       "description": "An HTTP code indicated for this error.",
       "title": "The HTTP status code",
       "type": "integer"
     },
     "title": {
-      "default": "Internal Server Error",
+      "default": "",
       "description": "Error title",
       "examples": [
-        "Internal Server Error"
+        "Not Found"
       ],
       "title": "Error title",
+      "const": "Not Found",
       "type": [
         "string",
         "null"
@@ -65,6 +68,24 @@
         null
       ],
       "title": "Error details",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "location": {
+      "default": null,
+      "description": "Location where the resource tried to be accessed",
+      "title": "Location of the resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reasonCode": {
+      "default": null,
+      "description": "Reason code used to identify the error",
+      "title": "Predefined reason code",
       "type": [
         "string",
         "null"
