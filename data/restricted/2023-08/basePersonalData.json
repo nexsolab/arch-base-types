@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://types.nexso.dev/data/restricted/2023-08/basePersonalData.json",
+  "title": "Base of Personal Data schemas",
+  "description": "Definition of personal data type field",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "const": "https://types.nexso.dev/data/restricted/2023-08/personalData.json"
+    },
+    "restricted": {
+      "type": "boolean",
+      "title": "Restricted data processing",
+      "description": "Indicates if the data is restricted to be processed by the data controller"
+    },
+    "value": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Decrypted value",
+      "description": "Decrypted value of the personal data or `null` if the user don't have access to the data."
+    },
+    "pseudoValue": {
+      "type": "string",
+      "title": "Pseudo Value",
+      "description": "Pseudo value of the personal data, if the data is encrypted, hashed or tokenized. This could be used in logs."
+    },
+    "consentId": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Consent ID",
+      "description": "Consent ID that the user has given to the data controller to process the data"
+    },
+    "legalRegion": {
+      "type": "string",
+      "enum": [
+        "BR",
+        "EU",
+        "US-CA"
+      ],
+      "title": "Legal Region",
+      "description": "Legal region where the data is being processed"
+    }
+  }
+}

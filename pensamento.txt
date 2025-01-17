@@ -1,0 +1,159 @@
+// Aplicação define o schema de dados
+{ 
+  "$schema": "https://schemas.nexso.dev/meta/2023-08/data.json",
+  "$id": "http://localhost:3000/schemas/users.json",
+  "title": "User schema",
+  "description": "Schema for `users` collection in MongoDB",
+  "type": "object",
+  "required": ["name", "age"],
+  "properties": {
+    "_id": {
+      "bsonType": "objectId",
+      "type": "string",
+      "format": "uuid",
+      "examples": ["3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a"]
+    },
+    "name": {
+      "bsonType": "binary",
+      "type": "string",
+      "format": "binary",
+      "minLength": 5,
+      "maxLength": 100,
+      "encrypted": true,     <---------
+      "encType": "random",
+      "public": false,
+      "requiredReadPerms": ["nx.pii.read"],
+      "requiredRestrictPerms": ["nx.pii.read-including-restricted"],
+      "disposal": "upon-request"
+    },
+    "age": {
+      "bsonType": "binary",
+      "type": "number",
+      "format": "binary",
+      "min": 18,
+      "max": 150,
+      "encrypted": true,     <---------
+      "encType": "random",
+      "public": true,        <--------- quando é público não precisa de permissão
+      "disposal": "3 months" <--------- https://www.npmjs.com/package/timestring
+    }
+  }
+}
+
+// Criar usuário
+POST /users
+{
+  "name": "John Doe",
+  "email": "email@email.com",
+}
+
+// API executa insert do registro
+db.users.insert({
+  "name": "John Doe",
+  "email": "email@email.com",
+}, {
+
+});
+
+// Interceptador de insert pega os metadados /da collection/ do schema
+// --- db.nx_collections.find({ name: 'users' });
+
+meta {
+  ...,
+  "fields": {
+    "name": {
+      "field$schema": "https://types.nexso.dev/data/restricted/personal",
+      "fieldType": "pii-contact",
+      "public": false,
+      "requiredReadPerms": ["nx.pii.read"],
+      "requiredRestrictPerms": ["nx.pii.read-including-restricted"],
+      "encType": "random",
+      "anonymousValue": {
+        "strategy": "double-padding",
+        "attrs": ["pii-a-v1", "pii-b-v1"],
+      },
+      "disposal": "upon-request"
+    }
+  }
+}
+
+// Interceptador de insert analisa documento e percebe que há uma definição para o campo `name`.
+// ---Remove qualquer coisa que exista em _meta no documento---
+// 1. Ele deve ser criptografado com o algoritmo especificado
+// 2. Deve criar o anonymous value seguindo as regras
+// 3. Se disposal for um tempo definido, coloca a data no campo `disposal`
+   if (disposal === 'date') doc.disposalDate = new Date()
+
+doc {
+  _id: doc123,
+  name: {
+    "restricted": false,
+    "value": "******",
+    "anonymousValue": {
+      "strategy": "double-padding",
+      "attrs": ["pii-a-v1", "pii-b-v1"],
+      "value": "c6610d250a3113b3ab38f1ace5dd4913a59920dfc3b0e6e11a9d2afa7725c5ec"
+    },
+    "disposalDate": "2023-08-27",
+    "legalRegion": "US-CA"
+    "consentId": "607100a17d0eaf3ff49d7a81",
+  }
+}
+
+
+
+
+
+
+// consent
+{
+  id: cu1234
+  personId: p123
+  policyId: p13
+  policyRevision: 1
+  date: 2023-09-18 10:56:11
+  textShowed: 'Salvar este endereço para compras futuras.'
+  method: 'checkbox'
+  ip: 172.0.0.1
+  geo: [-23.2454, 10.54898]
+  userAgent: Mozilla 156/46
+}
+
+// dataPolicy
+{
+  id: p13,
+  revisions: [
+    {
+      id: 1,
+    }
+  ]
+}
+
+
+
+// personal
+{
+  "type": "pii-contact",
+  "restricted": false,
+  "value": "Gabriel",
+  "pseudoValue": "c6610d250a3113b3ab38f1ace5dd4913a59920dfc3b0e6e11a9d2afa7725c5ec",
+  "consentId": "6a9ec7fe-f27b-4be3-8350-19cd8850c971",
+  "legalRegion": "US-CA"
+}
+
+
+
+
+// === TASKS
+- Expor o schema da rota atual no contexto do express
+- Criar registro de usuários e chaves
+- Teste após remover a chave do usuário
+
+// --- lista de bases legais (pode ser aplicado mais de 1)
+- UserConsent
+- Contract
+- RequiredByLaw
+- ControllerLegitimeInterest
+
+// Funcionalidades
+- Me esqueça (remover chave do usuário?)
