@@ -1,20 +1,24 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "default": {
     "type": "https://types.nexso.dev/http/ServiceUnavailable",
     "title": "Service Unavailable"
   },
   "description": "Describe a Service Unavailable payload",
-  "examples": [{
-    "type": "https://types.nexso.dev/http/ServiceUnavailable",
-    "title": "Service Unavailable",
-    "reason": null,
-    "detail": null,
-    "backend-errors": [{
-      "message": "Invalid username/password combo",
-      "stack": "at line 1"
-    }]
-  }],
+  "examples": [
+    {
+      "type": "https://types.nexso.dev/http/ServiceUnavailable",
+      "title": "Service Unavailable",
+      "reason": null,
+      "detail": null,
+      "backend-errors": [
+        {
+          "message": "Invalid username/password combo",
+          "stack": "at line 1"
+        }
+      ]
+    }
+  ],
   "required": [
     "type",
     "statusCode"
@@ -76,12 +80,14 @@
     },
     "backend-errors": {
       "default": [],
-      "description": "Should indicate what errors occured at the backend",
+      "description": "Should indicate what errors occurred at the backend",
       "examples": [
-        [{
-          "name": "Invalid username/password combo",
-          "reason": null
-        }]
+        [
+          {
+            "name": "Invalid username/password combo",
+            "reason": null
+          }
+        ]
       ],
       "maxItems": 10,
       "minItems": 1,
@@ -89,37 +95,41 @@
       "type": "array",
       "additionalItems": false,
       "items": {
-        "$id": "#/properties/invalid-params/items",
-        "anyOf": [{
-          "default": {},
-          "examples": [{
-            "name": "page",
-            "reason": "Page number should be informed"
-          }],
-          "required": [
-            "name",
-            "reason"
-          ],
-          "title": "Invalid param description",
-          "properties": {
-            "message": {
-              "examples": [
-                "page"
-              ],
-              "title": "Error message",
-              "type": "string"
+        "anyOf": [
+          {
+            "default": {},
+            "examples": [
+              {
+                "name": "page",
+                "reason": "Page number should be informed"
+              }
+            ],
+            "required": [
+              "name",
+              "reason"
+            ],
+            "title": "Invalid param description",
+            "properties": {
+              "message": {
+                "examples": [
+                  "page"
+                ],
+                "title": "Error message",
+                "type": "string"
+              },
+              "stack": {
+                "description": "Error stacktrace",
+                "examples": [
+                  "Page number should be informed"
+                ],
+                "title": "Stacktrace of this error",
+                "type": "string"
+              }
             },
-            "stack": {
-              "description": "Error stacktrace",
-              "examples": [
-                "Page number should be informed"
-              ],
-              "title": "Stacktrace of this error",
-              "type": "string"
-            }
-          },
-          "additionalProperties": false
-        }]
+            "additionalProperties": false
+          }
+        ],
+        "$anchor": "/properties/invalid-params/items"
       }
     }
   },

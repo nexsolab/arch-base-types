@@ -1,18 +1,20 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "default": {
     "type": "https://types.nexso.dev/http/NotFound",
     "title": "Not Found"
   },
   "description": "Describe a Not Found error payload",
-  "examples": [{
-    "type": "https://types.nexso.dev/http/NotFound",
-    "title": "Not Found",
-    "reason": "No route match",
-    "detail": null,
-    "location": "/api/invalid",
-    "reasonCode": "no-route"
-  }],
+  "examples": [
+    {
+      "type": "https://types.nexso.dev/http/NotFound",
+      "title": "Not Found",
+      "reason": "No route match",
+      "detail": null,
+      "location": "/api/invalid",
+      "reasonCode": "no-route"
+    }
+  ],
   "required": [
     "type",
     "title"

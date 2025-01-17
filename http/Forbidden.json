@@ -1,20 +1,24 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "default": {
     "type": "https://types.nexso.dev/http/Forbidden",
     "title": "Forbidden"
   },
   "description": "Describe a Forbidden error payload",
-  "examples": [{
-    "type": "https://types.nexso.dev/http/Forbidden",
-    "title": "Forbidden",
-    "reason": null,
-    "detail": null,
-    "missing-authorizations": [{
-      "name": "page",
-      "reason": "Page should be informed"
-    }]
-  }],
+  "examples": [
+    {
+      "type": "https://types.nexso.dev/http/Forbidden",
+      "title": "Forbidden",
+      "reason": null,
+      "detail": null,
+      "missing-authorizations": [
+        {
+          "name": "page",
+          "reason": "Page should be informed"
+        }
+      ]
+    }
+  ],
   "required": [
     "type",
     "missing-authorizations"
@@ -79,11 +83,13 @@
       "default": [],
       "description": "Should indicate what authorizations is required to access the resource",
       "examples": [
-        [{
-          "type": "https://types.nexso.dev/authorization/Permission",
-          "name": "auth.location.remote-login@nexso.dev",
-          "message": "You cannot login from a remote location."
-        }]
+        [
+          {
+            "type": "https://types.nexso.dev/authorization/Permission",
+            "name": "auth.location.remote-login@nexso.dev",
+            "message": "You cannot login from a remote location."
+          }
+        ]
       ],
       "maxItems": 10,
       "minItems": 1,
@@ -91,30 +97,28 @@
       "type": "array",
       "additionalItems": true,
       "items": {
-        "$id": "#/properties/missing-authorizations/items",
-        "anyOf": [{
-          "default": {},
-          "required": [
-            "type",
-            "name"
-          ],
-          "title": "Missing authorization",
-          "properties": {
-            "type": {
-              "title": "The type of the required authorization",
-              "type": "string"
-            },
-            "name": {
-              "title": "The authorization name (role or permission name)",
-              "type": "string"
-            },
-            "message": {
-              "title": "A friendly message to requester why this is required",
-              "type": "string"
-            }
+        "type": "object",
+        "default": {},
+        "required": [
+          "type",
+          "name"
+        ],
+        "title": "Missing authorization",
+        "properties": {
+          "type": {
+            "title": "The type of the required authorization",
+            "type": "string"
           },
-          "additionalProperties": false
-        }]
+          "name": {
+            "title": "The authorization name (role or permission name)",
+            "type": "string"
+          },
+          "message": {
+            "title": "A friendly message to requester why this is required",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       }
     }
   },

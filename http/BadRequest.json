@@ -1,20 +1,24 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "default": {
     "type": "https://types.nexso.dev/http/BadRequest",
     "title": "Bad Request"
   },
   "description": "Describe a bad request error payload",
-  "examples": [{
-    "type": "https://types.nexso.dev/http/BadRequest",
-    "title": "Bad Request",
-    "reason": null,
-    "detail": null,
-    "invalid-params": [{
-      "name": "page",
-      "reason": "Page should be informed"
-    }]
-  }],
+  "examples": [
+    {
+      "type": "https://types.nexso.dev/http/BadRequest",
+      "title": "Bad Request",
+      "reason": null,
+      "detail": null,
+      "invalid-params": [
+        {
+          "name": "page",
+          "reason": "Page should be informed"
+        }
+      ]
+    }
+  ],
   "required": [
     "type",
     "invalid-params"
@@ -79,10 +83,12 @@
       "default": [],
       "description": "Should indicate what parameters have an error and a detail about the error for this",
       "examples": [
-        [{
-          "name": "xxx",
-          "reason": null
-        }]
+        [
+          {
+            "name": "page",
+            "reason": "should be a positive integer"
+          }
+        ]
       ],
       "maxItems": 10,
       "minItems": 1,
@@ -90,37 +96,37 @@
       "type": "array",
       "additionalItems": true,
       "items": {
-        "$id": "#/properties/invalid-params/items",
-        "anyOf": [{
-          "default": {},
-          "examples": [{
+        "type": "object",
+        "default": {},
+        "examples": [
+          {
             "name": "page",
             "reason": "Page number should be informed"
-          }],
-          "required": [
-            "name",
-            "reason"
-          ],
-          "title": "Invalid param description",
-          "properties": {
-            "name": {
-              "examples": [
-                "page"
-              ],
-              "title": "Property name",
-              "type": "string"
-            },
-            "reason": {
-              "description": "Should specify why this field is invalid. Not passed in validation? Is not informed? Is empty?",
-              "examples": [
-                "Page number should be informed"
-              ],
-              "title": "Why is invalid",
-              "type": "string"
-            }
+          }
+        ],
+        "required": [
+          "name",
+          "reason"
+        ],
+        "title": "Invalid param description",
+        "properties": {
+          "name": {
+            "examples": [
+              "page"
+            ],
+            "title": "Property name",
+            "type": "string"
           },
-          "additionalProperties": false
-        }]
+          "reason": {
+            "description": "Should specify why this field is invalid. Not passed in validation? Is not informed? Is empty?",
+            "examples": [
+              "Page number should be informed"
+            ],
+            "title": "Why is invalid",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       }
     }
   },

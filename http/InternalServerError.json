@@ -1,16 +1,18 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "default": {
     "type": "https://types.nexso.dev/http/InternalServerError",
     "title": "Internal Server Error"
   },
   "description": "Describe a internal server error payload",
-  "examples": [{
-    "type": "https://types.nexso.dev/http/InternalServerError",
-    "title": "Internal Server Error",
-    "reason": null,
-    "detail": null
-  }],
+  "examples": [
+    {
+      "type": "https://types.nexso.dev/http/InternalServerError",
+      "title": "Internal Server Error",
+      "reason": null,
+      "detail": null
+    }
+  ],
   "required": [
     "type",
     "statusCode"
