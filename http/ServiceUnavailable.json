@@ -95,41 +95,37 @@
       "type": "array",
       "additionalItems": false,
       "items": {
-        "anyOf": [
+        "type": "object",
+        "default": {},
+        "examples": [
           {
-            "default": {},
-            "examples": [
-              {
-                "name": "page",
-                "reason": "Page number should be informed"
-              }
-            ],
-            "required": [
-              "name",
-              "reason"
-            ],
-            "title": "Invalid param description",
-            "properties": {
-              "message": {
-                "examples": [
-                  "page"
-                ],
-                "title": "Error message",
-                "type": "string"
-              },
-              "stack": {
-                "description": "Error stacktrace",
-                "examples": [
-                  "Page number should be informed"
-                ],
-                "title": "Stacktrace of this error",
-                "type": "string"
-              }
-            },
-            "additionalProperties": false
+            "name": "page",
+            "reason": "Page number should be informed"
           }
         ],
-        "$anchor": "/properties/invalid-params/items"
+        "required": [
+          "name",
+          "reason"
+        ],
+        "title": "Invalid param description",
+        "properties": {
+          "message": {
+            "examples": [
+              "page"
+            ],
+            "title": "Error message",
+            "type": "string"
+          },
+          "stack": {
+            "description": "Error stacktrace",
+            "examples": [
+              "Page number should be informed"
+            ],
+            "title": "Stacktrace of this error",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       }
     }
   },
